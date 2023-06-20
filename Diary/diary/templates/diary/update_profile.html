@@ -1,0 +1,15 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% block title %} profile update {% endblock %}
+{% block profile %}
+<link rel="stylesheet" href="{% static '/css/profile_detail.css' %}">
+
+<h1>프로필 업데이트</h1>
+<form method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+  <table>
+      {{ form }}
+  </table>
+    <button type="submit">프로필 업데이트 하기</button>
+</form>
+{% endblock %}

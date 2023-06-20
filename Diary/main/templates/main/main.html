@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>main</title>
+        <link rel="stylesheet" href="{% static '/css/index.css' %}">
+        <script src="/static/js/index.js" defer></script>
+    </head>
+
+    <body>
+    {% if not user.is_authenticated %}
+        {% include 'main/main_before_login.html' %}
+    {% else %}
+        <div class="mainbox">
+            {% include 'main/navbar.html' %}
+            <div class="main_wrap">
+                <img src="https://img.onnada.com/2022/0202/5f21eef217.jpg" class="me">
+                <div class="main_content" style="padding-top: 3%">
+                    <p>안녕하세요 {{ user.profile.nickname }}님❣️</p>
+                    <p>오늘 하루는 어떠셨나요?</p>
+                    <p>오늘도 하루를 기록하러 가보는 거 어때요?</p>
+                    <a href="/diary/calendar" style="color:lightpink">👉기록하러 가기👈</a>
+                </div>
+            </div>
+
+
+            <footer>
+                <p>copyright 2023 CHAERISH All rights reserved.</p>
+            </footer>
+{% endif %}
+
+        </div>
+
+
+
+    </body>
+
+
+
+
+
+
+
+</html>

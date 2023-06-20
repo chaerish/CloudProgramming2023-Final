@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+            <nav class="navbar">
+                <div class="navbar_logo">
+                    <a href="/" style="font-weight: bold">Todayis</a>
+                </div>
+                <ul class="navbar_menu">
+                    <a class="nav-link" href="{% url 'main:logout' %}" style="padding-bottom: 10px">{{ user.username }} (로그아웃)</a
+                    <li><a href="/">Main</a></li>
+                    <li><a href="/diary/calendar">Calendar</a></li>
+                    <li><a href="/diary/list/all/">Diary</a></li>
+                    <li><a href="/diary/profile">Profile</a></li>
+                </ul>
+                <a href="#" class="navbar_menuBtn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561123.png" style="width:20px;">
+                </a>
+
+            </nav>

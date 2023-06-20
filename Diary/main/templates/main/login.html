@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<script src="/static/js/index.js" defer></script>
+ <div class="mainbox">
+     <div class="main_wrap">
+         <img src="https://img.onnada.com/2022/0202/5f21eef217.jpg" class="me">
+         <div class="main_content" style="padding-top: 3%">
+               <div class="form">
+                <form method="POST" action="{% url 'main:login' %}">
+                {% csrf_token %}
+                {% include "main/form_errors.html" %}
+
+                <input class="id" name="username" type="text" value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디">
+                <input class="pd" name="password" type="password" value="{{ form.password.value|default_if_none:'' }}" placeholder="비밀번호">
+                <input class="send" type="submit" value="로그인">
+            </form>
+        </div>
+
+         </div>
+
+    </div>
+
+      <footer>
+          <p>copyright 2023 CHAERISH All rights reserved.</p>
+       </footer>
+
+
+  </div>

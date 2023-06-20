@@ -1,0 +1,34 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% block title %} profile update {% endblock %}
+{% block profile %}
+<link rel="stylesheet" href="{% static '/css/profile_detail.css' %}">
+<div class="profileDiv">
+    <h1>{{ request.user.username }}님의 프로필</h1>
+    {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" style="height:50px;
+    width:50px;" class="profile_img" alt="프로필 사진">
+    {% else %}
+        <img src="https://i.pinimg.com/564x/4c/85/31/4c8531dbc05c77cb7a5893297977ac89.jpg" style="height:100px; width:100px;" class="profile_img" alt="프로필 사진">
+   {% endif %}
+    <h3>{{ request.user.profile.nickname}} </h3>
+    <hr/>
+    {% if request.user.profile.bio %}
+        <h4>{{ request.user.profile.bio }}</h4>
+    {% else %}
+        <h4>한줄 소개가 없어요!</h4>
+    {% endif %}
+   <a href="/diary/update_profile/" role="button">수정하기</a>
+</div>
+
+
+
+<!--{#    <form method="post" enctype="multipart/form-data">#}-->
+<!--{#    {% csrf_token %}#}-->
+<!--{#    <table>#}-->
+<!--{#        {{ form }}#}-->
+<!--{#    </table>#}-->
+<!--{#    <button type="submit">프로필 업데이트 하기</button>#}-->
+<!--{#    </form>#}-->
+
+{% endblock %}

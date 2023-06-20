@@ -1,0 +1,18 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% block title %} profile update {% endblock %}
+{% block content %}
+{#<link rel="stylesheet" href="{% static '/css/profile_detail.css' %}">#}
+<h1>오늘의 일기</h1>
+    <h3>오늘 하루는 어떠셨나요? 🤔</h3>
+    <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <button type="submit">글쓰기</button>
+    </form>
+    <p></p>
+    {{ form.media }}
+{% endblock %}

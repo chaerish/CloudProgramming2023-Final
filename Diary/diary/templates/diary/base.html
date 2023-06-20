@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>main</title>
+        <link rel="stylesheet" href="{% static '/css/index.css' %}">
+        <script src="{% static '/js/index.js' %}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="mainbox">
+            {% include 'main/navbar.html' %}
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="profile">
+                {% block profile %}{% endblock %}
+            </div>
+            <footer>
+              <p>copyright 2023 CHAERISH All rights reserved.</p>
+            </footer>
+         </div>
+
+    </body>
+
+
+
+
+
+
+
+</html>

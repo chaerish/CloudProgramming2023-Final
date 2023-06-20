@@ -1,0 +1,20 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% block title %} Diary List {% endblock %}
+{% block content %}
+{#<link rel="stylesheet" href="{% static '/css/profile_detail.css' %}">#}
+<span><a href = "{% url 'list' 'all' %}"><p>전체</p></a><a href = "{% url 'list' 'happy' %}"><p>happy</p></a><a href = "{% url 'list' 'sad' %}"><p>sad</p></a><a href = "{% url 'list' 'angry' %}"><p>angry</p></a><a href = "{% url 'list' 'calm' %}"><p>calm</p></a></span>
+{% if user.is_authenticated %}
+    {% for p in post_list %}
+    <div style="padding-top:3px;">
+        <h3>{{ p.title }}</h3>
+        <h4>{{ p.mood }}</h4>
+        <p>{{ p.date }}</p>
+        <a href="{{ p.get_absolute_url }}" style="font-size: 13px;">READ MORE</a>
+        <hr/>
+    </div>
+    {% endfor %}
+    <a href="/diary/calendar/" role="button" style="float:right">글쓰기</a>
+{% endif %}
+
+{% endblock %}
