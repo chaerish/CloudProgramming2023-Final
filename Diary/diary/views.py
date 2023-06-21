@@ -14,7 +14,7 @@ from diary.forms import ProfileForm
 from diary.models import Post, Calendar, Profile
 
 
-# 이따
+
 def delete_post(request, pk):
     post = Post.objects.get(pk=pk)
     post_title = post.title
@@ -22,7 +22,7 @@ def delete_post(request, pk):
 
     post.delete()
 
-    return redirect('list')
+    return redirect('list', mood='all')
 
 
 def item(request):
@@ -59,7 +59,7 @@ class PostCreate(CreateView, LoginRequiredMixin, UserPassesTestMixin):
                 post.date = datetime.strptime(date_json, '%Y-%m-%d').date()
                 post.save()
 
-                # Create and save calendar data for the post
+            
                 title = form.cleaned_data.get('title')
                 data = {
                     'date': date_json,
@@ -150,12 +150,4 @@ def detail_profile(request):
 
     return render(request, 'diary/profile_detail.html', context)
 
-# @csrf_exempt
-# def save_event(request):
-#     if request.method == 'POST':
-#         event_date = request.POST.get('eventDate')
-#         event_content = request.POST.get('eventContent')
-#
-#
-#
-#     return HttpResponse('잘못된 요청입니다.')
+
