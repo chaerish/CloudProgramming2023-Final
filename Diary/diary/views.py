@@ -13,7 +13,8 @@ import openai
 from diary.forms import ProfileForm
 from diary.models import Post, Calendar, Profile
 
-#이따
+
+# 이따
 def delete_post(request, pk):
     post = Post.objects.get(pk=pk)
     post_title = post.title
@@ -64,8 +65,8 @@ class PostCreate(CreateView, LoginRequiredMixin, UserPassesTestMixin):
                     'date': date_json,
                     'content': title,
                 }
-                calendar_data = Calendar(date=data['date'],content = data['content'],post = post)
-                calendar_data.user=current_user
+                calendar_data = Calendar(date=data['date'], content=data['content'], post=post)
+                calendar_data.user = current_user
                 calendar_data.save()
 
         return super().form_valid(form)
@@ -86,7 +87,7 @@ class PostList(LoginRequiredMixin, ListView):
         if self.kwargs['mood'] == "all":
             queryset = queryset.filter(user=current_user)
         else:
-            queryset = queryset.filter(user=current_user,mood = self.kwargs['mood'])
+            queryset = queryset.filter(user=current_user, mood=self.kwargs['mood'])
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -111,8 +112,8 @@ def calendar(request):
     citem_list = []
     for item in calendar_items:
         citem_list.append({
-            'date' : item.date.strftime("%Y-%m-%d"),
-            'content' : item.content
+            'date': item.date.strftime("%Y-%m-%d"),
+            'content': item.content
         })
     return render(request, 'diary/calendar.html', {'citem_list': citem_list})
 
@@ -134,9 +135,17 @@ def update_profile(request):
     return render(request, 'diary/update_profile.html', {'form': form})
 
 
+@login_required()
 def detail_profile(request):
+
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        # 프로필이 없는 경우 새로운 프로필 생성
+        profile = Profile.objects.create(user=request.user)
+
     context = {
-        "profile" : Profile.objects.get(user = request.user)
+        "profile": profile
     }
 
     return render(request, 'diary/profile_detail.html', context)

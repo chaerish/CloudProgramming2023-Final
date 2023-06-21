@@ -31,7 +31,7 @@ a{
 }
 .navbar_menu{
     display: flex;
-    padding-left:0; /* list 특성 상 자동으로 주어지는 padding-left를 0으로 만듬*/ 
+    padding-left:0; /* list.css 특성 상 자동으로 주어지는 padding-left를 0으로 만듬*/
 }
 .navbar_menu li{
     padding: 8px 12px;

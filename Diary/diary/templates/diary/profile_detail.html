@@ -6,8 +6,8 @@
 <div class="profileDiv">
     <h1>{{ request.user.username }}님의 프로필</h1>
     {% if profile.profile_image %}
-        <img src="{{ profile.profile_image.url }}" style="height:50px;
-    width:50px;" class="profile_img" alt="프로필 사진">
+        <img src="{{ profile.profile_image.url }}" style="height:40%;
+    width:40%;" class="profile_img" alt="프로필 사진">
     {% else %}
         <img src="https://i.pinimg.com/564x/4c/85/31/4c8531dbc05c77cb7a5893297977ac89.jpg" style="height:100px; width:100px;" class="profile_img" alt="프로필 사진">
    {% endif %}
